@@ -1,8 +1,8 @@
 
-class HomeController {
+class LoginController {
   constructor(){
     this.message = 'Hello world'
   }
 }
 
-export default HomeController;
+export default LoginController;

@@ -1,9 +1,9 @@
-import HomeController from './home_controller';
+import LoginController from './login_controller';
 
-var moduleName='meanEs6App.controllers';
+var moduleName='registerApp.controllers';
 
 angular
     .module(moduleName, [])
-    .controller('meanEs6App.homeController', HomeController);
+    .controller('registerApp.loginController', LoginController);
 
 export default moduleName;

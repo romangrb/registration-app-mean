@@ -1,0 +1,9 @@
+{
+  "name": "mean-stack-setup-es6",
+  "version": "1.0.0",
+  "dependencies": {
+    "traceur": "0.0.79",
+    "angular": "^1.5.6",
+    "angular-route": "^1.5.6"
+  }
+}

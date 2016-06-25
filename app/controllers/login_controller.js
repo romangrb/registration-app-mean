@@ -1,7 +1,16 @@
 
 class LoginController {
   constructor(){
-    this.message = 'Hello world'
+    
+    this.username = '';
+    this.password = '';
+    
+    this.login = function(){
+        this.getAccount();
+    };
+  }
+  getAccount() {
+    console.log(this.username, 123);
   }
 }
 

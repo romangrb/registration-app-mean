@@ -11,14 +11,14 @@
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
-            <input id="username" type="text">
+            <input ng-model="vm.username" id="username" type="text">
             <label for="username" class="center-align">Username</label>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>
-            <input id="password" type="password">
+            <input ng-model="vm.password" id="password" type="password">
             <label for="password">Password</label>
           </div>
         </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="row">
           <div class="input-field col s4">
-            <a href="index.html" class="btn waves-effect waves-light col s12">Login</a>
+            <a ng-click="vm.login()" class="btn waves-effect waves-light col s12">Login</a>
           </div>
         </div>
         <div class="row">

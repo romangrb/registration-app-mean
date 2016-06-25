@@ -1,14 +1,23 @@
 {
-  "Customer": {
-      "dbConfig": {
-          "url": "mongodb://localhost/enmskeleton",
-          "schemaName": "Users",
-          "collectionName": "User",
-          "options": {
-              "server": { 
-                  "reconnectTries": 5 
-              }
-          }
-      }
-  }
+    "Customer": {
+        "dbConfig": {
+            "url": "mongodb://localhost/enmskeleton",
+            "schemaName": "Users",
+            "collectionName": "User",
+            "options": {
+                "server": { 
+                    "reconnectTries": 5 
+                }
+            }
+        },
+        "session": {
+            "secret": "someSecretKey",
+            "key": "sid",
+            "cookie": {
+                "path": "/",
+                "httpOnly": true,
+                "maxAge": null
+            }
+        }
+    }
 }

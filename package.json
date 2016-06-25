@@ -17,6 +17,7 @@
   "dependencies": {
     "bower": "^1.7.9",
     "config": "^1.21.0",
+    "connect-mongo": "^1.2.1",
     "express-session": "^1.13.0",
     "mongoose": "^4.5.2"
   }

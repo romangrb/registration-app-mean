@@ -1,10 +1,11 @@
-var up_config = require('../model/crud_model_constant');
-var mongoose = require('mongoose');  
+var config = require('config'),
+  mongoose = require('mongoose'),
+  dbConfig = config.get('Customer.dbConfig'),
 
-var Schema = new mongoose.Schema({  
+  Schema = new mongoose.Schema({  
   name: String,
   src: String,
   is_deleted: Boolean
 });
 
-mongoose.model(up_config.COLLECTION_NAME, Schema);
+mongoose.model(dbConfig.collectionName, Schema);

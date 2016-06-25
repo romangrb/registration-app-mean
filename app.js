@@ -1,11 +1,20 @@
 var express = require('express'),
+  mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
   app = express(),
+  session = require('express-session'),
+  config = require('config'),
+  dbConfig = config.get('Customer.dbConfig'),
   
   IP = process.env.IP,
   PORT = process.env.PORT;
 
-  app.use(bodyParser());
+  //mongoose.connect(dbConfig.url, dbConfig.options);
+
+  app.use(bodyParser.urlencoded({
+      extended: true
+  }));
+  
   app.use(express.static('.'));
   
   app.get('/', function (request, response) {

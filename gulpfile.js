@@ -10,9 +10,9 @@ gulp.task('server', function () {
 gulp.task('default', ['server']);
 */
 
-var gulp = require('gulp'),
-    spawn = require('child_process').spawn,
-    node;
+const gulp = require('gulp');
+const spawn = require('child_process').spawn;
+var node;
 
 /**
  * $ gulp server

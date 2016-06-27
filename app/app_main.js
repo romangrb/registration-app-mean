@@ -1,4 +1,5 @@
 import { default as controllersModuleName } from './controllers/app_controllers';
+import { default as servicesModuleName } from './services/app_services';
 
 function config($routeProvider){
   $routeProvider
@@ -27,6 +28,7 @@ var moduleName = 'registerApp';
 angular
     .module(moduleName, [
         'ngRoute',
+        servicesModuleName,
         controllersModuleName
     ])
     .config(config);

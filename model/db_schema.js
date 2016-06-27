@@ -3,9 +3,8 @@ var config = require('config'),
   dbConfig = config.get('Customer.dbConfig'),
 
   Schema = new mongoose.Schema({  
-  name: String,
-  src: String,
-  is_deleted: Boolean
-});
+      login: String,
+      password: String
+  });
 
 mongoose.model(dbConfig.collectionName, Schema);

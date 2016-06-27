@@ -1,12 +1,12 @@
 {
     "Customer": {
         "dbConfig": {
-            "url": "mongodb://localhost/enmskeleton",
-            "schemaName": "Users",
-            "collectionName": "User",
+            "url": "mongodb://localhost/accounts",
+            "schemaName": "users",
+            "collectionName": "user",
             "options": {
                 "server": { 
-                    "reconnectTries": 5 
+                    "reconnectTries": 2 
                 }
             }
         },

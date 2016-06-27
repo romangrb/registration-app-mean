@@ -1,16 +1,20 @@
 
 class LoginController {
-  constructor(){
+  
+  constructor($http){
     
-    this.username = '';
-    this.password = '';
+    this.username = ''
+    this.password = ''
     
     this.login = function(){
-        this.getAccount();
+        this.getAccount($http)
     };
   }
-  getAccount() {
-    console.log(this.username, 123);
+  
+  getAccount(http) {
+    
+    http.get('/s');
+    //console.log(this.username, 123);
   }
 }
 

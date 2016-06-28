@@ -27,12 +27,6 @@ const  PORT = process.env.PORT;
     }
   ));
   
-  app.get('/s', function (req, res, next) {
-      req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
-      res.json(req.session);
-        // res.sendfle('index.html');       
-  });
-  
   app.listen(PORT, IP, function(){
       console.log("The server is run  on \n port :", PORT, "\n ip", IP);
   });

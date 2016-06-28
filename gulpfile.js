@@ -1,60 +1,48 @@
 
 const gulp = require('gulp');
 const spawn = require('child_process').spawn;
-const browserSync = require('browser-sync').create();
 const gutil = require('gulp-util');
-var node;
+const codePs = {
+  closeErr : 8,
+  closeErrMsg : 'Error detected, waiting for changes...'
+};
+var files = {
+      server: ['./app.js'],
+      js:   [
+            './app/**/*.js', 
+            './model/*.js'
+            ],
+      json: ['./config/*.json'], 
+      html: ['./index.html']
+},
+node = null;
 
 /**
  * $ gulp server
  * description: launch the server. If there's a server already running, kill it.
  */
+ 
 gulp.task('server', function() {
 
   if (node) node.kill()
-  node = spawn('node', ['app.js'], {stdio: 'inherit'})
+  node = spawn('node', files.server, {stdio: 'inherit'})
   node.on('close', function (code) {
-    if (code === 8) {
-      gutil.log('Error detected, waiting for changes...');
+    if (code === codePs.closeErr) {
+      gutil.log(codePs.closeErrMsg);
     }
   });
 });
 
-// Static server
-
-gulp.task('frontEndReload', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
-    
-    browserSync.watch(
-                   [
-                      './app.js', 
-                      './app/**/*.js', 
-                      './config/*.*', 
-                      './model/*.*',
-                      './index.html',
-                    ],
-                    {},
-                    browserSync.reload
-    )//.on('change', browserSync.reload);
-                     
-});
-
-gulp.task('backEndReload', function() {
-    gulp.watch(
-            [
-              './app.js', 
-              './app/**/*.js', 
-              './config/*.*', 
-              './model/*.*',
-              './index.html',
-            ],
-            {},
-            gulp.series(gulp.parallel('server', 'backEndReload', 'frontEndReload'))
-    )
+gulp.task('reloadServer', function() {
+    gulp.watch([
+                files.server,
+                files.js,
+                files.json,
+                files.html
+              ],
+              {},
+              gulp.parallel('server', 'reloadServer')
+    );
 });
 
 // clean up if an error goes unhandled.
@@ -67,5 +55,5 @@ process.on('exit', function() {
  * description: start the development environment
  */
  
-gulp.task('default', gulp.series(gulp.parallel('server', 'backEndReload', 'frontEndReload')))//, 'frontEndReload'));
+gulp.task('default', gulp.parallel('server', 'reloadServer'));
 

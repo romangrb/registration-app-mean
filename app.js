@@ -30,7 +30,7 @@ var express = require('express'),
   app.get('/s', function (req, res, next) {
       req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
       res.json(req.session);
-        //res.sendfle('index.html');      
+        // res.sendfle('index.html');       
   });
   
   app.listen(PORT, IP, function(){

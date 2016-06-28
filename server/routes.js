@@ -8,12 +8,30 @@ module.exports = function(app, passport) {
     app.get('/jade', function(req, res) {
         res.render('templates/index.ejs'); // load the index.ejs file
     });
+    // process the signup form
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect : '/profile', // redirect to the secure profile section
+        failureRedirect : '/signup', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
     
+    // process the login form
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect : '/profile', // redirect to the secure profile section
+        failureRedirect : '/login', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
     // route for login form
     // route for processing the login form
     // route for signup form
     // route for processing the signup form
     // route for showing the profile page
+    app.get('/signup', function(req, res) {
+
+        // render the page and pass in any flash data if it exists
+        res.render('templates/signup.ejs', { message: req.flash('signupMessage') });
+    });
+
     
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('templates/profile.ejs', {

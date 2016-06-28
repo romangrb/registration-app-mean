@@ -1,14 +1,14 @@
-var express = require('express'),
-  mongoose = require('mongoose'),
-  bodyParser = require('body-parser'),
-  session = require('express-session'),
-  MongoStore = require('connect-mongo')(session),
-  app = express(),
-  config = require('config'),
-  dbConfig = config.get('Customer.dbConfig'),
+const  express = require('express');
+const  mongoose = require('mongoose');
+const  bodyParser = require('body-parser');
+const  session = require('express-session');
+const  MongoStore = require('connect-mongo')(session);
+const  app = express();
+const  config = require('config');
+const  dbConfig = config.get('Customer.dbConfig');
   
-  IP = process.env.IP,
-  PORT = process.env.PORT;
+const  IP = process.env.IP;
+const  PORT = process.env.PORT;
 
   mongoose.connect(dbConfig.url, dbConfig.options);
 

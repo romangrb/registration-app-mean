@@ -5,7 +5,7 @@ const LocalStrategy    = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const config           = require('config');
 // load up the user model
-const User             = require('./model/user');
+const User             = require('./user');
 
 // load the auth variables
 const configAuth       = config.get('Customer.authentication');

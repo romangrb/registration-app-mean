@@ -28,8 +28,9 @@ const  PORT = process.env.PORT;
       extended: true
   }));
   
-  app.use(express.static('.'));
-  
+  //app.use(express.static('.'));
+  app.set('views', './templates');
+
   app.set('view engine', 'ejs'); // set up ejs for templating
   
   // required for passport
@@ -39,7 +40,7 @@ const  PORT = process.env.PORT;
   app.use(flash()); // use connect-flash for flash messages stored in session
   
   // routes ======================================================================
-  require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+  require('./server/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
   
   // launch ======================================================================
 

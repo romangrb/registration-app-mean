@@ -10,10 +10,14 @@ var files = {
       server: ['./app.js'],
       js:   [
             './app/**/*.js', 
+            './server/*.js',
             './model/*.js'
             ],
       json: ['./config/*.json'], 
-      html: ['./index.html']
+      html: [
+            './index.html', 
+            './templates/*.*'
+            ]
 },
 node = null;
 

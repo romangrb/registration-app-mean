@@ -2,7 +2,6 @@ const  express = require('express');
 const  mongoose = require('mongoose');
 const  bodyParser = require('body-parser');
 const  session = require('express-session');
-const  MongoStore = require('connect-mongo')(session);
 const  app = express();
 const  config = require('config');
 const  dbConfig = config.get('Customer.dbConfig');
@@ -34,7 +33,7 @@ const  PORT = process.env.PORT;
   app.set('view engine', 'ejs'); // set up ejs for templating
   
   // required for passport
-  app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+  app.use(session({ secret: '9TltZmW5odKJSf084B52WZ4T6445z95S' })); // session secret
   app.use(passport.initialize());
   app.use(passport.session()); // persistent login sessions
   app.use(flash()); // use connect-flash for flash messages stored in session
@@ -43,15 +42,6 @@ const  PORT = process.env.PORT;
   require('./server/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
   
   // launch ======================================================================
-
-  /*app.use(session(
-    {
-      secret: config.get('Customer.session.secret'),
-      key: config.get('Customer.session.key'),
-      cookie: config.get('Customer.session.cookie'),
-      store: new MongoStore({mongooseConnection: mongoose.connection})
-    }
-  ));*/
   
   app.listen(PORT, IP, function(){
       console.log("The server is run  on \n port :", PORT, "\n ip", IP);

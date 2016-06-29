@@ -21,8 +21,8 @@
         },
         "authentication": {
             "facebookAuth" : {
-                "clientID"      : "your-secret-clientID-here", 
-                "clientSecret"  : "your-client-secret-here",
+                "clientID"      : "1715245745407620", 
+                "clientSecret"  : "9e88a4c43f303902647ea94ae9a5a7d0",
                 "callbackURL"   : "http://localhost:8080/auth/facebook/callback"
             },
             "twitterAuth" : {

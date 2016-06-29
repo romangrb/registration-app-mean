@@ -1,10 +1,12 @@
 
 const gulp = require('gulp');
 const spawn = require('child_process').spawn;
+const exec = require('child_process').exec;
 const gutil = require('gulp-util');
 const codePs = {
   closeErr : 8,
-  closeErrMsg : 'Error detected, waiting for changes...'
+  closeErrMsg : 'Error detected, waiting for changes...',
+  modgoErrMsg : 'Error Mongod :'
 };
 var files = {
       server: ['./app.js'],
@@ -25,7 +27,21 @@ node = null;
  * $ gulp server
  * description: launch the server. If there's a server already running, kill it.
  */
- 
+
+function runCommand(command) {
+  return function (cb) {
+    exec(command, function (err, stdout, stderr) {
+      gutil.log(stdout, stderr);
+      cb(err);
+    });
+  };
+}
+
+// Mongod tasks
+gulp.task('start-mongo', runCommand('mongod'));
+gulp.task('stop-mongo',  runCommand('mongod --shutdown'));
+
+// Nodejs start
 gulp.task('server', function() {
 
   if (node) node.kill()
@@ -59,5 +75,5 @@ process.on('exit', function() {
  * description: start the development environment
  */
  
-gulp.task('default', gulp.parallel('server', 'reloadServer'));
+gulp.task('default', gulp.parallel('start-mongo', 'server', 'reloadServer'));
 

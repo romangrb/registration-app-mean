@@ -27,10 +27,10 @@ const  PORT = process.env.PORT;
       extended: true
   }));
   
-  //app.use(express.static('.'));
+  app.use(express.static('.'));
   app.set('views', './templates');
 
-  app.set('view engine', 'ejs'); // set up ejs for templating
+  // app.set('view engine', 'ejs'); // set up ejs for templating
   
   // required for passport
   app.use(session({ secret: '9TltZmW5odKJSf084B52WZ4T6445z95S' })); // session secret

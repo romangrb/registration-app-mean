@@ -19,6 +19,7 @@
               ],
         json: ['./config/*.json'], 
         html: [
+              './app/**/*.css',
               './index.html', 
               './templates/*.*'
               ]

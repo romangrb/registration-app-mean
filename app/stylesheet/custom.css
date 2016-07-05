@@ -5,11 +5,13 @@
 .login-form {
   width: 280px;  
 }
+
 .login-form-text{
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 0.8rem;
 }
+
 .profile-image-login{
   width: 100px;
   height: 100px !important;

@@ -3,7 +3,7 @@ class LoginController {
   
   constructor($http){
     
-    this.username = ''
+    this.username = '32'
     this.password = ''
     
     this.login = function(){
@@ -13,8 +13,14 @@ class LoginController {
   
   getAccount(http) {
     
-    http.get('/s');
-    //console.log(this.username, 123);
+    let data = JSON.stringify({
+        "username" : this.username,
+        "password" : this.password
+      })
+    
+    console.log(data);
+    
+    http.post('/login', data);
   }
 }
 

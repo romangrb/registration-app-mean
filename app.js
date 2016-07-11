@@ -20,17 +20,24 @@ const  PORT = process.env.PORT;
   require('./model/passport')(passport); // pass passport for configuration
   
   // set up our express application
+  app.set('views', './templates');
+  
   app.use(morgan('dev')); // log every request to the console
   app.use(cookieParser()); // read cookies (needed for auth)
   // get information from html forms
+  app.use(express.static('.'));
+  // app.set('view engine', 'ejs'); // set up ejs for templating
+  /** bodyParser.urlencoded(options)
+   * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST)
+   * and exposes the resulting object (containing the keys and values) on req.body
+   */
   app.use(bodyParser.urlencoded({
       extended: true
   }));
-  
-  app.use(express.static('.'));
-  app.set('views', './templates');
-
-  // app.set('view engine', 'ejs'); // set up ejs for templating
+  /**bodyParser.json(options)
+   * Parses the text as JSON and exposes the resulting object on req.body.
+   */
+  app.use(bodyParser.json());
   
   // required for passport
   app.use(session({ secret: '9TltZmW5odKJSf084B52WZ4T6445z95S' })); // session secret
